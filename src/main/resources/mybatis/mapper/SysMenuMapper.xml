@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wanger.dao.SysMenuDao" >
+    <resultMap id="BaseResultMap" type="com.wanger.domain.SysMenuEntity" >
+        <id column="menu_code" property="menu_code" jdbcType="VARCHAR" />
+        <result column="menu_name" property="menu_name" jdbcType="VARCHAR" />
+        <result column="p_menu_code" property="p_menu_code" jdbcType="VARCHAR" />
+        <result column="level" property="level" jdbcType="INTEGER" />
+        <result column="url" property="url" jdbcType="VARCHAR" />
+        <result column="icon" property="icon" jdbcType="VARCHAR" />
+        <result column="is_menu" property="is_menu" jdbcType="INTEGER" />
+        <result column="order_no" property="order_no" jdbcType="INTEGER" />
+        <result column="create_time" property="create_time" jdbcType="DATE" />
+        <result column="modify_time" property="modify_time" jdbcType="DATE" />
+        <result column="is_del" property="is_del" jdbcType="INTEGER" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        menu_code, menu_name, p_menu_code, level, url, icon, is_menu, order_no, create_time, 
+        modify_time, is_del
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+        select 
+        <include refid="Base_Column_List" />
+        from sys_menu
+        where menu_code = #{menu_code,jdbcType=VARCHAR}
+    </select>
+
+    <insert id="insertSelective" parameterType="com.wanger.domain.SysMenuEntity" >
+        insert into sys_menu
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="menu_code != null" >
+                menu_code,
+            </if>
+            <if test="menu_name != null" >
+                menu_name,
+            </if>
+            <if test="p_menu_code != null" >
+                p_menu_code,
+            </if>
+            <if test="level != null" >
+                level,
+            </if>
+            <if test="url != null" >
+                url,
+            </if>
+            <if test="icon != null" >
+                icon,
+            </if>
+            <if test="is_menu != null" >
+                is_menu,
+            </if>
+            <if test="order_no != null" >
+                order_no,
+            </if>
+            <if test="create_time != null" >
+                create_time,
+            </if>
+            <if test="modify_time != null" >
+                modify_time,
+            </if>
+            <if test="is_del != null" >
+                is_del,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="menu_code != null" >
+                #{menu_code,jdbcType=VARCHAR},
+            </if>
+            <if test="menu_name != null" >
+                #{menu_name,jdbcType=VARCHAR},
+            </if>
+            <if test="p_menu_code != null" >
+                #{p_menu_code,jdbcType=VARCHAR},
+            </if>
+            <if test="level != null" >
+                #{level,jdbcType=INTEGER},
+            </if>
+            <if test="url != null" >
+                #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="icon != null" >
+                #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="is_menu != null" >
+                #{is_menu,jdbcType=INTEGER},
+            </if>
+            <if test="order_no != null" >
+                #{order_no,jdbcType=INTEGER},
+            </if>
+            <if test="create_time != null" >
+                #{create_time,jdbcType=DATE},
+            </if>
+            <if test="modify_time != null" >
+                #{modify_time,jdbcType=DATE},
+            </if>
+            <if test="is_del != null" >
+                #{is_del,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.wanger.domain.SysMenuEntity" >
+        update sys_menu
+        <set >
+            <if test="menu_name != null" >
+                menu_name = #{menu_name,jdbcType=VARCHAR},
+            </if>
+            <if test="p_menu_code != null" >
+                p_menu_code = #{p_menu_code,jdbcType=VARCHAR},
+            </if>
+            <if test="level != null" >
+                level = #{level,jdbcType=INTEGER},
+            </if>
+            <if test="url != null" >
+                url = #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="icon != null" >
+                icon = #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="is_menu != null" >
+                is_menu = #{is_menu,jdbcType=INTEGER},
+            </if>
+            <if test="order_no != null" >
+                order_no = #{order_no,jdbcType=INTEGER},
+            </if>
+            <if test="create_time != null" >
+                create_time = #{create_time,jdbcType=DATE},
+            </if>
+            <if test="modify_time != null" >
+                modify_time = #{modify_time,jdbcType=DATE},
+            </if>
+            <if test="is_del != null" >
+                is_del = #{is_del,jdbcType=INTEGER},
+            </if>
+        </set>
+        where menu_code = #{menu_code,jdbcType=VARCHAR}
+    </update>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+        delete from sys_menu
+        where menu_code = #{menu_code,jdbcType=VARCHAR}
+    </delete>
+
+</mapper>
